@@ -1,14 +1,23 @@
 package DesignATM;
 
 import DesignATM.ATMStates.ATMState;
+import DesignATM.ATMStates.IdleState;
 
 public class ATM {
-    private static ATM atmObject = new ATM();
+    private static ATM atmObject = new ATM();  // Singleton: eager initialization
     private ATMState atmState;
     private Integer atmBalance;
     private Integer noOfTwoThousandNote;
     private Integer noOfFiveHundredNote;
     private Integer noOFHundredNote;
+
+    private ATM() {
+    }
+
+    public static ATM getATMObject() {
+        atmObject.setAtmState(new IdleState());
+        return atmObject;
+    }
 
     public ATMState getAtmState() {
         return atmState;
@@ -23,15 +32,18 @@ public class ATM {
     }
 
     public static void setAtmObject(ATM atmObject) {
-        ATM.atmObject = atmObject;
+        atmObject = atmObject;
     }
 
     public Integer getAtmBalance() {
         return atmBalance;
     }
 
-    public void setAtmBalance(Integer atmBalance) {
+    public void setAtmBalance(Integer atmBalance, int twoKNote, int fiveHundredNote, int oneHundredNote) {
         this.atmBalance = atmBalance;
+        this.noOfTwoThousandNote = twoKNote;
+        this.noOfFiveHundredNote = fiveHundredNote;
+        this.noOFHundredNote = oneHundredNote;
     }
 
     public Integer getNoOfTwoThousandNote() {
@@ -57,6 +69,4 @@ public class ATM {
     public void setNoOFHundredNote(Integer noOFHundredNote) {
         this.noOFHundredNote = noOFHundredNote;
     }
-
-    public void currentATM
 }
