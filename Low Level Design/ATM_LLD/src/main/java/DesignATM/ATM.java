@@ -19,6 +19,22 @@ public class ATM {
         return atmObject;
     }
 
+    public void deductAmount(int withdrawAmt) {
+        atmBalance -= withdrawAmt;
+    }
+
+    public void deductTwoThousandNotes(int notes) {
+        this.noOfTwoThousandNote -= notes;
+    }
+
+    public void deductFiveHundredNotes(int notes) {
+        this.noOfFiveHundredNote -= notes;
+    }
+
+    public void deductOneHundredNote(int notes) {
+        this.noOFHundredNote -= notes;
+    }
+
     public ATMState getAtmState() {
         return atmState;
     }
@@ -68,5 +84,12 @@ public class ATM {
 
     public void setNoOFHundredNote(Integer noOFHundredNote) {
         this.noOFHundredNote = noOFHundredNote;
+    }
+
+    public void printCurrentState() {
+        System.out.println("Balance: " + this.atmBalance);
+        System.out.println("2kNotes: " + this.noOfTwoThousandNote);
+        System.out.println("500Notes: " + this.noOfFiveHundredNote);
+        System.out.println("100Notes: " + this.noOFHundredNote);
     }
 }
